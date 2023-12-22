@@ -1,0 +1,105 @@
+﻿@model Expediente.Models.Fisico
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <!-- Fila para Identificacion, asegúrate de que use el mismo esquema de columnas que los otros campos -->
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-4 col-lg-3 col-xl-2 p-3 form-group">
+                @Html.LabelFor(model => model.Tipo_Identificacion)
+                @Html.DropDownList("Tipo Identificacion", (SelectList)ViewBag.TiposID, "-- Selecciona --", new { @class = "form-control" })
+            </div>
+            <div class="col-12 col-md-4 col-lg-3 col-xl-2 p-3 form-group">
+                @Html.LabelFor(model => model.Identificacion)
+                @Html.EditorFor(model => model.Identificacion, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="col-12 col-md-4 col-lg-3 col-xl-2 p-3 form-group">
+               
+            </div>
+        </div>
+
+        <!-- Fila para Nombre, PrimerApellido y SegundoApellido -->
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-4 col-lg-3 col-xl-2 p-3 form-group">
+                @Html.LabelFor(model => model.Nombre)
+                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="col-12 col-md-4 col-lg-3 col-xl-2 p-3 form-group">
+                @Html.LabelFor(model => model.PrimerApellido)
+                @Html.EditorFor(model => model.PrimerApellido, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="col-12 col-md-4 col-lg-3 col-xl-2 p-3 form-group">
+                @Html.LabelFor(model => model.SegundoApellido)
+                @Html.EditorFor(model => model.SegundoApellido, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <!-- Fila para Fecha Ncimiento, Sexo y Generos -->
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-4 col-lg-3 col-xl-2 p-3 form-group">
+                @Html.LabelFor(model => model.FechaNacimiento)
+                @Html.EditorFor(model => model.FechaNacimiento, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                @Html.ValidationMessageFor(model => model.FechaNacimiento, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-12 col-md-4 col-lg-3 col-xl-2 p-3 form-group">
+                @Html.LabelFor(model => model.Sexo)
+                @if (ViewBag.Generos != null)
+                {
+                    @Html.DropDownList("Generos", (SelectList)ViewBag.Generos, "-- Selecciona un Genero --", new { @class = "form-control" })
+                }
+                else
+                {
+                    <p>No se pudieron cargar los generos.</p>
+                }
+            </div>
+            <div class="col-12 col-md-4 col-lg-3 col-xl-2 p-3 form-group">
+                @Html.LabelFor(model => model.EstadoCivil)
+                @if (ViewBag.Civil != null)
+                {
+                    @Html.DropDownList("EstadoCivil", (SelectList)ViewBag.Civil, "-- Selecciona --", new { @class = "form-control" })
+                }
+                else
+                {
+                    <p>No se pudieron cargar los Estados Civiles.</p>
+                }
+            </div>
+        </div>
+
+        <!-- Fila para Estado Civil, Ocupacion y Nacionalidad -->
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-4 col-lg-3 col-xl-2 p-3 form-group">
+                @Html.LabelFor(model => model.CasadoVeces)
+                @Html.EditorFor(model => model.CasadoVeces, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="col-12 col-md-4 col-lg-3 col-xl-2 p-3 form-group">
+                @Html.LabelFor(model => model.Ocupacion)
+                @Html.EditorFor(model => model.Ocupacion, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="col-12 col-md-4 col-lg-3 col-xl-2 p-3 form-group">
+                @Html.LabelFor(model => model.Nacionalidad)
+                @if (ViewBag.Nacionalidades != null)
+                {
+                    @Html.DropDownList("Nacionalidad", (SelectList)ViewBag.Nacionalidades, "-- Selecciona una Nacionalidad --", new { @class = "form-control" })
+                }
+                else
+                {
+                    <p>No se pudieron cargar las nacionalidades.</p>
+                }
+            </div>
+        </div>
+
+        <!-- Continúa con las demás filas y campos -->
+
+        <div class="row">
+            <div class="col-12 text-center">
+                <input type="submit" value="Crear Fisico" class="btn btn-primary mt-3" />
+            </div>
+        </div>
+    </div>
+
+
+    
+    
+}

@@ -1,0 +1,4 @@
+CREATE TABLE Generos (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Sexo VARCHAR(20) NOT NULL unique
+);
