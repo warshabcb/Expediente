@@ -1,48 +1,74 @@
 ﻿@model IEnumerable<Expediente.Models.Fisico>
 @{
     ViewBag.Title = "Clientes Físicos";
+
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title text-center">@ViewBag.Title</h4>
+        </div>
+        <div class="card-body">
+            <div class="row ">
+                <div class="col mb-1">
+                    <a asp-action="Create" asp-controller="Fisicos" class="fw-bold btn-sm btn btn-primary">Crear Fisico</a>
+                </div>
+            </div>
+            <!--Tablas-->
+            <!-- Agrega aquí funcionalidades de búsqueda o filtrado -->
+            <table class="table table-sm table-hover table-responsive table-bordered">
+                <thead>
+                    <tr>
+                        <th>Identificacion</th>
+                        <th>Nombre</th>
+                        <th>1° Apellido</th>
+                        <th>2° Apellido</th>
+                        <th>Fecha Nacimiento</th>
+                        <th>@Html.DisplayNameFor(model => model.Sexo)</th>
+                        <th class="text-center">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="justify-content-center align-baseline">
+                            <td>@Html.DisplayFor(modelItem => item.Identificacion)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                            <td>@Html.DisplayFor(modelItem => item.PrimerApellido)</td>
+                            <td>@Html.DisplayFor(modelItem => item.SegundoApellido)</td>
+                            <td class="justify-content-center align-content-center">@Html.DisplayFor(modelItem => item.FechaNacimiento)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Sexo)</td>
+                            <td justify-content-center align="center">
+                                <a href="@Url.Action("Edit", new { id = item.Id })" class="btn btn-success btn-icon fa-sm" title="Editar">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-info btn-icon fa-sm" title="Detalles">
+                                    <i class="fas fa-info-circle"></i>
+                                </a>
+                                <a href="@Url.Action("Delete", new { id = item.Id })" class="btn btn-danger btn-icon fa-sm" title="Eliminar" onclick="return confirm('¿Estás seguro de querer eliminar este registro?');">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            
+        </div>
+        <div class="card-footer h-75 shadow-sm">
+            <h6 class="text-center">Lista de Clientes</h6>
+        </div>
+    </div>
+
+
+
+
 }
-<h2 class="text-center">@ViewBag.Title </h2>
-<p class="text-start fw-bold">
-    @Html.ActionLink("Crear Fisico", "Create", "Fisicos", new { @class = "text-center text-decoration-none" })
-</p>
-<!-- Agrega aquí funcionalidades de búsqueda o filtrado -->
-<table class="table table-sm table-hover table-responsive">
-    <thead>
-        <tr>
-            <th>Identificacion</th>
-            <th>Nombre</th>
-            <th>1° Apellido</th>
-            <th>2° Apellido</th>
-            <th>Fecha Nacimiento</th>
-            <th>@Html.DisplayNameFor(model => model.Sexo)</th>
-            <th class="text-center">Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr class="justify-content-center align-baseline">
-                <td>@Html.DisplayFor(modelItem => item.Identificacion)</td>
-                <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
-                <td>@Html.DisplayFor(modelItem => item.PrimerApellido)</td>
-                <td>@Html.DisplayFor(modelItem => item.SegundoApellido)</td>
-                <td class="justify-content-center align-content-center">@Html.DisplayFor(modelItem => item.FechaNacimiento)</td>
-                <td>@Html.DisplayFor(modelItem => item.Sexo)</td>
-                <td justify-content-center align="center">
-                    <a href="@Url.Action("Edit", new { id = item.Id })" class="btn btn-success btn-icon fa-sm" title="Editar">
-                        <i class="fas fa-edit"></i>
-                    </a>
-                    <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-info btn-icon fa-sm" title="Detalles">
-                        <i class="fas fa-info-circle"></i>
-                    </a>
-                    <a href="@Url.Action("Delete", new { id = item.Id })" class="btn btn-danger btn-icon fa-sm" title="Eliminar" onclick="return confirm('¿Estás seguro de querer eliminar este registro?');">
-                        <i class="fas fa-trash-alt"></i>
-                    </a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+
+
+
+    
+
+   
+
+
 <!-- Aquí puedes agregar la paginación -->
 <!-- Incluir scripts de JavaScript para funcionalidades adicionales si es necesario -->
