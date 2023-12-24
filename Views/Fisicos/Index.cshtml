@@ -3,7 +3,7 @@
     ViewBag.Title = "Clientes Físicos";
 
     <div class="card">
-        <div class="card-header">
+        <div class="card-header d-flex justify-content-center align-items-center">
             <h4 class="card-title text-center">@ViewBag.Title</h4>
         </div>
         <div class="card-body">
@@ -11,10 +11,33 @@
                 <div class="col mb-1">
                     <a asp-action="Create" asp-controller="Fisicos" class="fw-bold btn-sm btn btn-primary">Crear Fisico</a>
                 </div>
+                <div class="col">
+                    <div class="row justify-content-around">
+                        <div class="col-6">
+                            <div class="input-group flex-nowrap">
+                                <span class="input-group-text" id="addon-wrapping"># Identificacion</span>
+                                <input type="text" class="form-control" placeholder="Identificacion" aria-label="Idenfitifcacion" aria-describedby="addon-wrapping">
+                           </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="input-group flex-nowrap">
+                                <span class="input-group-text" id="addon-wrapping">Nombre</span>
+                                <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="input-group flex-nowrap">
+                                <span class="input-group-text" id="addon-wrapping">1° Apellido</span>
+                                <input type="text" class="form-control" placeholder="1° Apellido" aria-label="1° Apellido" aria-describedby="addon-wrapping">
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
             </div>
             <!--Tablas-->
             <!-- Agrega aquí funcionalidades de búsqueda o filtrado -->
-            <table class="table table-sm table-hover table-responsive table-bordered">
+            <table id="Tabla_Clientes_Fisicos" class="table table-sm table-hover table-responsive table-bordered">
                 <thead>
                     <tr>
                         <th>Identificacion</th>
