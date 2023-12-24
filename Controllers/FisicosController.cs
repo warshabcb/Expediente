@@ -41,22 +41,23 @@ namespace Expediente.Controllers
         // GET: Fisicos/Create
         public IActionResult Create()
         {
-            var TiposID = _context.Tipos_ID.Select(n => new { n.Id, n.Tipo }).ToList();
-            var Generos = _context.Generos.Select(n => new { n.Id, n.Sexo }).ToList();
-            var Civil   = _context.EstadosCivil.Select(n => new { n.Id, n.Estado_Civil }).ToList();
-            var ListaNacionalidades = _context.Nacionalidades.Select(n => new { n.Id, n.Nombre_Spanish }).ToList();
-            ViewBag.Nacionalidades = new SelectList(ListaNacionalidades, "Id", "Nombre_Spanish");
-            ViewBag.Generos        = new SelectList(Generos, "Id", "Sexo");
-            ViewBag.Civil          = new SelectList(Civil, "Id", "Estado_Civil");
-            ViewBag.TiposID        = new SelectList(TiposID, "Id", "Tipo");
 
+            var TiposID             = _context.Tipos_ID.Select(t => t.Tipo).ToList();
+            var Generos             = _context.Generos.Select(n => n.Sexo).ToList();
+            var Civil               = _context.EstadosCivil.Select(n => n.Estado_Civil).ToList();
+            var ListaNacionalidades = _context.Nacionalidades.Select(n => n.Nombre_Spanish).ToList();
+            ViewBag.Nacionalidades  = ListaNacionalidades;
+            ViewBag.Generos         = Generos;
+            ViewBag.TiposID         = TiposID;
+            ViewBag.Civil           = Civil;
             return View(new Fisico()); // Instancia vacía de Fisico.                        
         }
 
         // POST: Fisicos/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Identificacion,Nombre,PrimerApellido,SegundoApellido,FechaNacimiento,Sexo,Nacionalidad")] Fisico Fisicos)
+        public async Task<IActionResult> Create(Fisico Fisicos)
+        
         {
             if (ModelState.IsValid)
             {
