@@ -8,7 +8,7 @@ namespace Expediente.Models
             public int Id { get; set; }
             [Required]
             [Display(Name = "Tipo Identificacion")]
-        public string Tipo_Identificacion { get; set; } = string.Empty;
+            public string Tipo_Identificacion { get; set; } = string.Empty;
             [Required]
             public string Identificacion { get; set; } = string.Empty;
             [Required]
@@ -32,11 +32,5 @@ namespace Expediente.Models
             [Range(0, 99, ErrorMessage = "El número de veces casado debe estar entre 0 y 99")]
             public int CasadoVeces { get; set; } = 0;
     }
-
-
-    // 
-    // public string Ocupacion { get; set; } = string.Empty;
-    // public string CasadoVeces { get; set; } = string.Empty;
-    // public DateTime FechaCreacion { get; set; }
-    // public string Audit { get; set; } = string.Empty;
+    
 }
