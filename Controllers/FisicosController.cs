@@ -23,19 +23,28 @@ namespace Expediente.Controllers
         // GET: Fisicos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            
+            var TiposID = _context.Tipos_ID.Select(t => t.Tipo).ToList();
+            var Generos = _context.Generos.Select(n => n.Sexo).ToList();
+            var Civil = _context.EstadosCivil.Select(n => n.Estado_Civil).ToList();
+            var ListaNacionalidades = _context.Nacionalidades.Select(n => n.Nombre_Spanish).ToList();
+            ViewBag.Nacionalidades = ListaNacionalidades;
+            ViewBag.Generos = Generos;
+            ViewBag.TiposID = TiposID;
+            ViewBag.Civil = Civil;
             if (id == null)
             {
                 return NotFound();
             }
 
-            var Fisicos = await _context.Fisicos
+            var Cliente = await _context.Fisicos
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (Fisicos == null)
+            if (Cliente == null)
             {
                 return NotFound();
             }
 
-            return View(Fisicos);
+            return View(Cliente);
         }
 
         // GET: Fisicos/Create
@@ -71,12 +80,11 @@ namespace Expediente.Controllers
         // GET: Fisicos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            var Fisicos = await _context.Fisicos.FindAsync(id);
             if (id == null)
             {
                 return NotFound();
             }
-
-            var Fisicos = await _context.Fisicos.FindAsync(id);
             if (Fisicos == null)
             {
                 return NotFound();

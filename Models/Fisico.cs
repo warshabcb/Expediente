@@ -7,7 +7,8 @@ namespace Expediente.Models
             [Key]
             public int Id { get; set; }
             [Required]
-            public string Tipo_Identificacion { get; set; } = string.Empty;
+            [Display(Name = "Tipo Identificacion")]
+        public string Tipo_Identificacion { get; set; } = string.Empty;
             [Required]
             public string Identificacion { get; set; } = string.Empty;
             [Required]
@@ -19,6 +20,8 @@ namespace Expediente.Models
             public string SegundoApellido { get; set; } = string.Empty;
             [DataType(DataType.Date)]
             [Display(Name = "Fecha de Nacimiento")]
+            //[DataType(DataType.Date)]
+            [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
             public DateOnly FechaNacimiento { get; set; }
             [Display(Name = "Estado Civil")]
             public string EstadoCivil { get; set; } = string.Empty;

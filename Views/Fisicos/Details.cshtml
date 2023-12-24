@@ -1,0 +1,103 @@
+﻿@model Expediente.Models.Fisico
+ 
+@using (Html.BeginForm("index", "Fisicos"))
+{
+    <div class="ml-5 mr-5 pr-5 container justify-content-center">
+        <!--Titulo Formulario-->
+        <h2 class="text-center mb-5">Informacion Cliente Físico</h2>
+       
+        <!-- Card -->
+        <div class="card my-3 ">
+            <div class="card-body my-3 ">
+                <!-- Tipo y Identificacion -->
+                <div class="row mb-4 justify-content-start">
+                    <div class="col-3 ms-5">
+                        @Html.LabelFor(model => model.Tipo_Identificacion)
+                        @Html.DropDownListFor(model => model.Tipo_Identificacion, new SelectList((IEnumerable<string>)ViewBag.TiposID), "-- Seleccione --",
+                                     new { @class = "form-control", disabled = "disabled" })
+                    </div>
+                    <div class="col-3">
+                        @Html.LabelFor(model => model.Identificacion)
+                            @Html.EditorFor(model => model.Identificacion, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    </div>
+                </div>
+                <!-- Nombre | 1° Apellido | 2° Apellido -->
+                <div class="row mb-4">
+                    <div class="col-3 ms-5">
+                        @Html.LabelFor(model => model.Nombre)
+                            @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    </div>
+                    <div class="col-3">
+                        @Html.LabelFor(model => model.PrimerApellido)
+                            @Html.EditorFor(model => model.PrimerApellido, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    </div>
+                    <div class="col-3">
+                        @Html.LabelFor(model => model.SegundoApellido)
+                            @Html.EditorFor(model => model.SegundoApellido, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    </div>
+                </div>
+                <!-- Fecha Nacimiento | Sexo | Genero -->
+                <div class="row mb-4">
+                    <div class="col-3 ms-5">
+                        @Html.LabelFor(model => model.FechaNacimiento)
+                            @Html.EditorFor(model => model.FechaNacimiento, new { htmlAttributes = new { @class = "form-control", @type = "date", disabled = "disabled" } })
+                            @Html.ValidationMessageFor(model => model.FechaNacimiento, "", new { @class = "text-danger", disabled = "disabled" })
+                    </div>
+                    <div class="col-3">
+                        @Html.LabelFor(model => model.Sexo)
+                        @if (ViewBag.Generos != null)
+                        {
+                            @Html.DropDownListFor(model => model.Sexo, new SelectList((IEnumerable<string>)ViewBag.Generos), "-- Seleccione --",
+                                         new { @class = "form-control", disabled = "disabled" })
+                        }
+                        else
+                        {
+                            <p>No se pudieron cargar los generos.</p>
+                        }
+                    </div>
+                    <div class="col-3">
+                        @Html.LabelFor(model => model.EstadoCivil)
+                        @if (ViewBag.Civil != null)
+                        {
+                            @Html.DropDownListFor(model => model.EstadoCivil, new SelectList((IEnumerable<string>)ViewBag.Civil), "-- Seleccione --",
+                                         new { @class = "form-control", disabled = "disabled" })
+                        }
+                        else
+                        {
+                            <p>No se pudieron cargar los Estados Civiles.</p>
+                        }
+                    </div>
+                </div>
+                <!-- Estado Civil | Ocupacion | Nacionalidad -->
+                <div class="row mb-4">
+                    <div class="col-3 ms-5">
+                        @Html.LabelFor(model => model.CasadoVeces)
+                            @Html.EditorFor(model => model.CasadoVeces, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    </div>
+                    <div class="col-3">
+                        @Html.LabelFor(model => model.Ocupacion)
+                            @Html.EditorFor(model => model.Ocupacion, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    </div>
+                    <div class="col-3">
+                        @Html.LabelFor(model => model.Nacionalidad)
+                        @if (Model.Nacionalidad != null)
+                        {
+                            @Html.LabelFor(model => model.Nacionalidad)
+                            @Html.EditorFor(model => model.Nacionalidad, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                        }
+           
+                    </div>
+                </div>
+                   
+                <!--Botton-->
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <input type="submit" value="Regresar" class="btn btn-primary btn-md mt-3" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+           
+    </div>
+}
