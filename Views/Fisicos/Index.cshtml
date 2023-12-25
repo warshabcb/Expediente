@@ -69,6 +69,7 @@
                         <th>2° Apellido</th>
                         <th>Fecha Nacimiento</th>
                         <th>@Html.DisplayNameFor(model => model.Sexo)</th>
+                        <th>@Html.DisplayNameFor(model => model.Nacionalidad)</th>
                         <th class="text-center">Acciones</th>
                     </tr>
                 </thead>
@@ -82,6 +83,7 @@
                             <td>@Html.DisplayFor(modelItem => item.SegundoApellido)</td>
                             <td class="justify-content-center align-content-center">@Html.DisplayFor(modelItem => item.FechaNacimiento)</td>
                             <td>@Html.DisplayFor(modelItem => item.Sexo)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Nacionalidad)</td>
                             <td justify-content-center align="center">
                                 <a href="@Url.Action("Edit", new { id = item.Id })" class="btn btn-success btn-icon fa-sm" title="Editar">
                                     <i class="fas fa-edit"></i>

@@ -26,6 +26,7 @@ $(function ()
                         row.append($("<td></td>").text(item.segundoApellido || ''));
                         row.append($("<td></td>").text(item.fechaNacimiento || '')); // Considera formatear la fecha
                         row.append($("<td></td>").text(item.sexo || ''));
+                        row.append($("<td></td>").text(item.nacionalidad || ''));
                         row.append(
                             $("<td class='text-center'></td>").html(
                                 "<a href='/Fisicos/Edit/" + item.id + "' class='btn btn-success btn-icon fa-sm me-1' title='Editar'><i class='fas fa-edit '></i> </a>" +
@@ -67,6 +68,7 @@ $(function ()
                         row.append($("<td></td>").text(item.segundoApellido || ''));
                         row.append($("<td></td>").text(item.fechaNacimiento || '')); // Considera formatear la fecha
                         row.append($("<td></td>").text(item.sexo || ''));
+                        row.append($("<td></td>").text(item.nacionalidad || ''));
                         row.append(
                             $("<td class='text-center'></td>").html(
                                 "<a href='/Fisicos/Edit/" + item.id + "' class='btn btn-success btn-icon fa-sm me-1' title='Editar'><i class='fas fa-edit '></i> </a>" +
@@ -110,6 +112,7 @@ $(function ()
                         row.append($("<td></td>").text(item.segundoApellido || ''));
                         row.append($("<td></td>").text(item.fechaNacimiento || '')); // Considera formatear la fecha
                         row.append($("<td></td>").text(item.sexo || ''));
+                        row.append($("<td></td>").text(item.nacionalidad || ''));
                         row.append(
                             $("<td class='text-center'></td>").html(
                                 "<a href='/Fisicos/Edit/" + item.id + "' class='btn btn-success btn-icon fa-sm me-1' title='Editar'><i class='fas fa-edit '></i> </a>" +
@@ -154,6 +157,7 @@ $(function ()
                         row.append($("<td></td>").text(item.segundoApellido || ''));
                         row.append($("<td></td>").text(item.fechaNacimiento || '')); // Considera formatear la fecha
                         row.append($("<td></td>").text(item.sexo || ''));
+                        row.append($("<td></td>").text(item.nacionalidad || ''));
                         row.append(
                             $("<td class='text-center'></td>").html(
                                 "<a href='/Fisicos/Edit/" + item.id + "' class='btn btn-success btn-icon fa-sm me-1' title='Editar'><i class='fas fa-edit '></i> </a>" +
@@ -195,6 +199,7 @@ $(function ()
                         row.append($("<td></td>").text(item.segundoApellido || ''));
                         row.append($("<td></td>").text(item.fechaNacimiento || '')); // Considera formatear la fecha
                         row.append($("<td></td>").text(item.sexo || ''));
+                        row.append($("<td></td>").text(item.nacionalidad || ''));
                         row.append(
                             $("<td class='text-center'></td>").html(
                                 "<a href='/Fisicos/Edit/" + item.id + "' class='btn btn-success btn-icon fa-sm me-1' title='Editar'><i class='fas fa-edit '></i> </a>" +
