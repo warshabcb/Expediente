@@ -14,10 +14,16 @@ namespace Expediente.Controllers
         {
             _context = context;
         }
-        public IActionResult ObtenerClientesFisicos()
+
+        [HttpGet]
+        public async Task<IActionResult> BuscarPorIdentificacion(string identificacion)
         {
-            var Fisicos = _context.Fisicos.ToList(); // Consulta tu base de datos
-            return Json(Fisicos);
+            var resultado = await _context.Fisicos
+                                .Where(f => f.Identificacion.Contains(identificacion))
+                                .Take(10) // Limita los resultados a 10
+                                .ToListAsync();
+
+            return Json(resultado);
         }
     }
 }
