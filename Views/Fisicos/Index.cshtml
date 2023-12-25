@@ -3,15 +3,25 @@
     ViewBag.Title = "Clientes Físicos";
 
     <div class="card w-100 h-100">
-        <div class="row m-0 card-header d-flex justify-content-center align-items-center">
-            <div class="col">
+        <div class="row m-0 card-header d-flex justify-content-event align-items-center">
+            <div class="col text-start">
                 <a asp-action="Create" asp-controller="Fisicos" class="fw-bold btn-sm btn btn-primary">Crear Fisico</a>
             </div>
-            <div class="col">
+            <div class="col text-center">
                 <h4 class="card-title text-center">@ViewBag.Title</h4>
             </div>
-            <div class="col">
-                 
+            <div class="col text-end">
+                <div class="row justify-content-end align-items-center text-end">
+                    <div class="col text-end">
+                        <a class="fw-bold btn-sm btn btn-primary" title="Refrescar Pantalla" id="Botton_Refrescar">
+                            <i class="fa-solid fa-repeat"></i>
+                        </a>
+                        <a class="fw-bold btn-sm btn btn-primary" title="Limpiar Pantalla" id="Botton_Limpiar">
+                            <i class="fa-solid fa-broom"></i>
+                        </a>
+                    </div>
+                </div>
+                
             </div>
         </div>
        
@@ -23,25 +33,25 @@
                         <div class="col-3">
                             <div class="input-group input-group-sm flex-nowrap">
                                 <span class="input-group-text" id="addon-wrapping"># Identificacion</span>
-                                <input id="Identificacion_txt" type="text" class="form-control" placeholder="Identificacion" aria-label="Idenfitifcacion" aria-describedby="addon-wrapping">
+                                <input id="Identificacion_txt" type="text" class="form-control" autocomplete="off" aria-label="Idenfitifcacion" aria-describedby="addon-wrapping">
                            </div>
                         </div>
                         <div class="col-3">
                             <div class="input-group input-group-sm flex-nowrap">
                                 <span class="input-group-text" id="addon-wrapping">Nombre</span>
-                                <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">
+                                <input id="Nombre_txt" type="text" class="form-control" autocomplete="off" aria-label="Nombre" aria-describedby="addon-wrapping">
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="input-group input-group-sm flex-nowrap">
                                 <span class="input-group-text" id="addon-wrapping">1° Apellido</span>
-                                <input type="text" class="form-control" placeholder="1° Apellido" aria-label="1° Apellido" aria-describedby="addon-wrapping">
+                                <input id="PrimerApellido_txt" type="text" class="form-control" aria-label="1° Apellido" autocomplete="off" aria-describedby="addon-wrapping">
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="input-group input-group-sm flex-nowrap">
                                 <span class="input-group-text" id="addon-wrapping">2° Apellido</span>
-                                <input type="text" class="form-control" placeholder="2° Apellido" aria-label="1° Apellido" aria-describedby="addon-wrapping">
+                                <input id="SegundoApellido_txt" type="text" class="form-control" aria-label="1° Apellido" autocomplete="off" aria-describedby="addon-wrapping">
                             </div>
                         </div>
                     </div>
