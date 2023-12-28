@@ -2,10 +2,13 @@
 @{
     ViewBag.Title = "Clientes Físicos";
 
-    <div class="card w-100 h-100">
-        <div class="row m-0 card-header d-flex justify-content-event align-items-center">
+    <div class="card ">
+        <div class="row  card-header d-flex justify-content-event align-items-center">
             <div class="col text-start">
-                <a asp-action="Create" asp-controller="Fisicos" class="fw-bold btn-sm btn btn-primary">Crear Fisico</a>
+                <a asp-action="Create" asp-controller="Fisicos" class=" btn-sm btn btn-primary">
+                    <i class="fa-solid fa-user-plus"></i>
+                Crear Fisico
+                </a>
             </div>
             <div class="col text-center">
                 <h4 class="card-title text-center">@ViewBag.Title</h4>
@@ -26,7 +29,7 @@
         </div>
        
         <div class="card-body">
-            <div class="row ">
+            <div class="row">
                 
                 <div class="col-12 mb-2">
                     <div class="row justify-content-start d-flex   align-items-center">
@@ -62,7 +65,7 @@
             <!-- Agrega aquí funcionalidades de búsqueda o filtrado -->
             <table id="Tabla_Clientes_Fisicos" class="table table-sm table-hover table-responsive table-bordered">
                 <thead>
-                    <tr>
+                    <tr class="text-center">
                         <th>Identificacion</th>
                         <th>Nombre</th>
                         <th>1° Apellido</th>
@@ -76,7 +79,7 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr class="justify-content-center align-baseline">
+                        <tr class="justify-content-center align-baseline text-center">
                             <td>@Html.DisplayFor(modelItem => item.Identificacion)</td>
                             <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
                             <td>@Html.DisplayFor(modelItem => item.PrimerApellido)</td>

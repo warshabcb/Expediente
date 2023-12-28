@@ -19,7 +19,7 @@ $(function ()
                     // Iterar sobre los datos recibidos y rellenar la tabla
                     $.each(data, function (index, item) {
                         console.log(item);  // Depuración: Imprimir cada item para ver sus propiedades
-                        var row = $("<tr class='justify-content-center align-baseline'></tr>");
+                        var row = $("<tr class='justify-content-center align-baseline text-center'></tr>");
                         row.append($("<td></td>").text(item.identificacion || ''));
                         row.append($("<td></td>").text(item.nombre || ''));
                         row.append($("<td></td>").text(item.primerApellido || ''));
@@ -61,7 +61,7 @@ $(function ()
                     // Iterar sobre los datos recibidos y rellenar la tabla
                     $.each(data, function (index, item) {
                         console.log(item);  // Depuración: Imprimir cada item para ver sus propiedades
-                        var row = $("<tr class='justify-content-center align-baseline'></tr>");
+                        var row = $("<tr class='justify-content-center align-baseline text-center'></tr>");
                         row.append($("<td></td>").text(item.identificacion || ''));
                         row.append($("<td></td>").text(item.nombre || ''));
                         row.append($("<td></td>").text(item.primerApellido || ''));
@@ -105,7 +105,7 @@ $(function ()
                     // Iterar sobre los datos recibidos y rellenar la tabla
                     $.each(data, function (index, item) {
                         console.log(item);  // Depuración: Imprimir cada item para ver sus propiedades
-                        var row = $("<tr class='justify-content-center align-baseline'></tr>");
+                        var row = $("<tr class='justify-content-center align-baseline text-center'></tr>");
                         row.append($("<td></td>").text(item.identificacion || ''));
                         row.append($("<td></td>").text(item.nombre || ''));
                         row.append($("<td></td>").text(item.primerApellido || ''));
@@ -150,7 +150,7 @@ $(function ()
                     // Iterar sobre los datos recibidos y rellenar la tabla
                     $.each(data, function (index, item) {
                         console.log(item);  // Depuración: Imprimir cada item para ver sus propiedades
-                        var row = $("<tr class='justify-content-center align-baseline'></tr>");
+                        var row = $("<tr class='justify-content-center align-baseline text-center'></tr>");
                         row.append($("<td></td>").text(item.identificacion || ''));
                         row.append($("<td></td>").text(item.nombre || ''));
                         row.append($("<td></td>").text(item.primerApellido || ''));
@@ -192,7 +192,7 @@ $(function ()
                     // Iterar sobre los datos recibidos y rellenar la tabla
                     $.each(data, function (index, item) {
                         console.log(item);  // Depuración: Imprimir cada item para ver sus propiedades
-                        var row = $("<tr class='justify-content-center align-baseline'></tr>");
+                        var row = $("<tr class='justify-content-center align-baseline text-center'></tr>");
                         row.append($("<td></td>").text(item.identificacion || ''));
                         row.append($("<td></td>").text(item.nombre || ''));
                         row.append($("<td></td>").text(item.primerApellido || ''));
