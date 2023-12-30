@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Clientes Fisicos";
 
-    <div class="container-fluid  ">
+    <div class="container">
         <!-- Titulo Header Index Fisicos -->
         <div class="row"> 
             <div class="col">
@@ -72,14 +72,14 @@
         <!--Tablas | Cabeza -->
         <div class="row">
             <div class="col">
-                <table id="Tabla_Clientes_Fisicos" class="table table-sm table-hover table-responsive table-bordered">
-                    <thead>
+                <table id="Tabla_Clientes_Fisicos" class="table table-sm table-hover table-responsive table-bordered ">
+                    <thead class="table-secondary">
                         <tr class="text-center">
-                            <th>Identificacion</th>
-                            <th>Nombre</th>
-                            <th>1° Apellido</th>
-                            <th>2° Apellido</th>
-                            <th>Fecha Nacimiento</th>
+                            <th>@Html.DisplayNameFor(model => model.Identificacion)</th>
+                            <th>@Html.DisplayNameFor(model => model.Nombre)</th>
+                            <th>@Html.DisplayNameFor(model => model.PrimerApellido)</th>
+                            <th>@Html.DisplayNameFor(model => model.SegundoApellido)</th>
+                            <th>@Html.DisplayNameFor(model => model.FechaNacimiento)</th>
                             <th>@Html.DisplayNameFor(model => model.Sexo)</th>
                             <th>@Html.DisplayNameFor(model => model.Nacionalidad)</th>
                             <th class="text-center">Acciones</th>
@@ -113,6 +113,10 @@
                 </table>
             </div>
         </div>
+
+        <!-- Footer Card -->
+       
+
 
     </div>
     
