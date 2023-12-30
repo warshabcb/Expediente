@@ -93,10 +93,10 @@
                                 <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
                                 <td>@Html.DisplayFor(modelItem => item.PrimerApellido)</td>
                                 <td>@Html.DisplayFor(modelItem => item.SegundoApellido)</td>
-                                <td class="justify-content-center align-content-center">@Html.DisplayFor(modelItem => item.FechaNacimiento)</td>
+                                <td>@Html.DisplayFor(modelItem => item.FechaNacimiento)</td>
                                 <td>@Html.DisplayFor(modelItem => item.Sexo)</td>
                                 <td>@Html.DisplayFor(modelItem => item.Nacionalidad)</td>
-                                <td justify-content-center align="center">
+                                <td class="text-center">
                                     <a href="@Url.Action("Edit", new { id = item.Id })" class="btn btn-success btn-icon fa-sm" title="Editar">
                                         <i class="fas fa-edit"></i>
                                     </a>
