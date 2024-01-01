@@ -1,42 +1,42 @@
-﻿@using System.Collections
+﻿ @using System.Collections
 @model Expediente.Models.Fisico
- 
-@using (Html.BeginForm("Create", "Fisicos", FormMethod.Post, new { @id = "FormularioCreate", @name = "FormularioCreate" }))
+
+@using (Html.BeginForm("Edit", "Fisicos", FormMethod.Post, new { @id = "FormularioModificar", @name = "FormularioModificar" }))
 {
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="container border bordered pb-4 w-75">
         <!--Titulo Formulario-->
         <div class="row border bordered p-2  align-items-baseline bg-light ">
-            <div class="col text-start">
+            <div class="col text-start align-items-baseline">
                 <a asp-action="index" asp-controller="Fisicos" class="btn btn-primary btn-sm">
                     <i class="fa-solid fa-circle-arrow-left"></i>
-                    Regresar</a>
+                    Regresar
+                </a>
             </div>
-            <div class="col text-center">
+            <div class="col text-center align-items-baseline">
                 <!--Titulo Formulario-->
-                <h3>Crear Cliente Físico</h3>
+                <h3>Modificar Cliente Físico</h3>
             </div>
             <div class="col">
             </div>
         </div>
         <!--Titulo Formulario-->
-
         <!--Campos del Formulario  ( Tipo Identificacion y Cedula-->
         <div class="row justify-content-around mb-4 pt-4">
-                <div class="col-3 ms-1">
-                    @Html.LabelFor(model => model.Tipo_Identificacion)
-                    @Html.DropDownListFor(model => model.Tipo_Identificacion, new SelectList((IEnumerable<string>)ViewBag.TiposID), "-- Seleccione --",
+            <div class="col-3 ms-1">
+                @Html.LabelFor(model => model.Tipo_Identificacion)
+                @Html.DropDownListFor(model => model.Tipo_Identificacion, new SelectList((IEnumerable<string>)ViewBag.TiposID), "-- Seleccione --",
                          new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Tipo_Identificacion, "", new { @class = "text-danger" })
-                 
-                    
-                </div>
-                <div class="col-3">
-                    @Html.LabelFor(model => model.Identificacion)
-                    @Html.EditorFor(model => model.Identificacion, new { htmlAttributes = new { @class = "form-control", @id = "Identificacion" } })
-                    @Html.ValidationMessageFor(model => model.Identificacion, "", new { @class = "text-danger" })
-                </div>
-                <div class="col-3"></div>
+                @Html.ValidationMessageFor(model => model.Tipo_Identificacion, "", new { @class = "text-danger" })
+
+
+            </div>
+            <div class="col-3">
+                @Html.LabelFor(model => model.Identificacion)
+                @Html.EditorFor(model => model.Identificacion, new { htmlAttributes = new { @class = "form-control", @id = "Identificacion" } })
+                @Html.ValidationMessageFor(model => model.Identificacion, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-3"></div>
         </div>
         <!-- Nombre | 1° Apellido | 2° Apellido -->
         <div class="row mb-4  justify-content-around">
@@ -66,14 +66,14 @@
             <div class="col-3">
                 @Html.LabelFor(model => model.Sexo)
                 @Html.DropDownListFor(model => model.Sexo, new SelectList((IEnumerable<string>)ViewBag.Generos), "-- Seleccione --",
-                             new { @class = "form-control" })
+                         new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Sexo, "", new { @class = "text-danger" })
             </div>
             <div class="col-3">
                 @Html.LabelFor(model => model.EstadoCivil)
                 @Html.DropDownListFor(model => model.EstadoCivil, new SelectList((IEnumerable<string>)ViewBag.Civil), "-- Seleccione --",
-                             new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.EstadoCivil, "", new { @class = "text-danger" })              
+                         new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.EstadoCivil, "", new { @class = "text-danger" })
             </div>
         </div>
         <!-- Estado Civil | Ocupacion | Nacionalidad -->
@@ -91,24 +91,24 @@
             <div class="col-3">
                 @Html.LabelFor(model => model.Nacionalidad)
                 @Html.DropDownListFor(model => model.Nacionalidad, new SelectList((IEnumerable<string>)ViewBag.Nacionalidades), "-- Seleccione --",
-                             new { @class = "form-control" })
+                         new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Nacionalidad, "", new { @class = "text-danger" })
             </div>
         </div>
         <!--Botton-->
         <div class="row justify-content-center">
-            
+
             <div class="col text-center">
-                <input type="submit" value="Guardar Fisico" class="btn btn-outline-primary "/>
-            </div>     
-            
+                <input type="submit" value="Modificar Fisico" class="btn btn-outline-primary " />
+            </div>
+
         </div>
     </div>
 
 
 
 
-   
+
 }
 
 

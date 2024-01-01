@@ -82,7 +82,16 @@ namespace Expediente.Controllers
         // GET: Fisicos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            var TiposID = _context.Tipos_ID.Select(t => t.Tipo).ToList();
+            var Generos = _context.Generos.Select(n => n.Sexo).ToList();
+            var Civil = _context.EstadosCivil.Select(n => n.Estado_Civil).ToList();
+            var ListaNacionalidades = _context.Nacionalidades.Select(n => n.Nombre_Spanish).ToList();
+            ViewBag.Nacionalidades = ListaNacionalidades;
+            ViewBag.Generos = Generos;
+            ViewBag.TiposID = TiposID;
+            ViewBag.Civil = Civil;
             var Fisicos = await _context.Fisicos.FindAsync(id);
+
             if (id == null)
             {
                 return NotFound();
@@ -97,7 +106,7 @@ namespace Expediente.Controllers
         // POST: Fisicos/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Identificacion,Nombre,PrimerApellido,SegundoApellido,FechaNacimiento,Sexo,Nacionalidad")] Fisico Fisicos)
+        public async Task<IActionResult> Edit(int id, Fisico Fisicos)
         {
             if (id != Fisicos.Id)
             {
@@ -130,6 +139,14 @@ namespace Expediente.Controllers
         // GET: Fisicos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            var TiposID = _context.Tipos_ID.Select(t => t.Tipo).ToList();
+            var Generos = _context.Generos.Select(n => n.Sexo).ToList();
+            var Civil = _context.EstadosCivil.Select(n => n.Estado_Civil).ToList();
+            var ListaNacionalidades = _context.Nacionalidades.Select(n => n.Nombre_Spanish).ToList();
+            ViewBag.Nacionalidades = ListaNacionalidades;
+            ViewBag.Generos = Generos;
+            ViewBag.TiposID = TiposID;
+            ViewBag.Civil = Civil;
             if (id == null)
             {
                 return NotFound();
