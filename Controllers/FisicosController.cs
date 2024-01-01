@@ -59,22 +59,24 @@ namespace Expediente.Controllers
             ViewBag.Generos         = Generos;
             ViewBag.TiposID         = TiposID;
             ViewBag.Civil           = Civil;
-            return View(new Fisico()); // Instancia vacía de Fisico.                        
+            return View();                        
         }
 
         // POST: Fisicos/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Fisico Fisicos)
-        
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(Fisicos);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(Fisicos);
+        {   
+           
+                if (ModelState.IsValid)
+                {
+                    _context.Add(Fisicos);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+            
+                
+           return View(Fisicos);
         }
 
         // GET: Fisicos/Edit/5

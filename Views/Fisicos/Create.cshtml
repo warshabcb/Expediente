@@ -1,118 +1,133 @@
-﻿@model Expediente.Models.Fisico
+﻿@using System.Collections
+@model Expediente.Models.Fisico
  
-@using (Html.BeginForm("Create", "Fisicos", FormMethod.Post))
+@using (Html.BeginForm("Create", "Fisicos", FormMethod.Post, new { @id = "FormularioCreate", @name = "FormularioCreate" }))
 {
-     <div class="ml-5 mr-5 pr-5 container justify-content-center">
-
-       
-        
-        <!-- Card -->
-        <div class="card my-3 ">
-            <div class="m-0 p-1 row border bg-light shadow-sm">
-                <div class="col  d-flex justify-content-start align-items-center">
-                        <a asp-action="index" asp-controller="Fisicos" class="btn btn-primary btn-sm">Regresar</a>
-                    </div>
-                <div class="col  d-flex justify-content-center align-items-center">
-                        <!--Titulo Formulario-->
-                        <h3>Crear Cliente Físico</h3>
-                 </div>
-                <div class="col">
-                    <!--Espacio-->
-                   
-                </div>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="container border bordered pb-3">
+        <!--Titulo Formulario-->
+        <div class="row border bordered p-2  align-items-baseline bg-light ">
+            <div class="col text-start">
+                <a asp-action="index" asp-controller="Fisicos" class="btn btn-primary btn-sm">Regresar</a>
             </div>
-            
-            <div class="card-body my-3 ">
-                <!-- Tipo y Identificacion -->
-                <div class="row mb-4 justify-content-start">
-                    <div class="col-3 ms-5">
-                        @Html.LabelFor(model => model.Tipo_Identificacion)
-                        @Html.DropDownListFor(model => model.Tipo_Identificacion, new SelectList((IEnumerable<string>)ViewBag.TiposID), "-- Seleccione --",
-                                 new { @class = "form-control" })                     
-                    </div>
-                    <div class="col-3">
-                        @Html.LabelFor(model => model.Identificacion)
-                        @Html.EditorFor(model => model.Identificacion, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-                </div>
-                <!-- Nombre | 1° Apellido | 2° Apellido -->
-                <div class="row mb-4">
-                    <div class="col-3 ms-5">
-                        @Html.LabelFor(model => model.Nombre)
-                        @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-                    <div class="col-3">
-                        @Html.LabelFor(model => model.PrimerApellido)
-                        @Html.EditorFor(model => model.PrimerApellido, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-                    <div class="col-3">
-                        @Html.LabelFor(model => model.SegundoApellido)
-                        @Html.EditorFor(model => model.SegundoApellido, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-                </div>
-                <!-- Fecha Nacimiento | Sexo | Genero -->
-                <div class="row mb-4">
-                    <div class="col-3 ms-5">
-                        @Html.LabelFor(model => model.FechaNacimiento)
-                        @Html.EditorFor(model => model.FechaNacimiento, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
-                        @Html.ValidationMessageFor(model => model.FechaNacimiento, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-3">
-                        @Html.LabelFor(model => model.Sexo)
-                        @if (ViewBag.Generos != null)
-                        {
-                            @Html.DropDownListFor(model => model.Sexo, new SelectList((IEnumerable<string>)ViewBag.Generos), "-- Seleccione --",
-                                     new { @class = "form-control" })
-                        }
-                        else
-                        {
-                            <p>No se pudieron cargar los generos.</p>
-                        }
-                    </div>
-                    <div class="col-3">
-                        @Html.LabelFor(model => model.EstadoCivil)
-                        @if (ViewBag.Civil != null)
-                        {
-                            @Html.DropDownListFor(model => model.EstadoCivil, new SelectList((IEnumerable<string>)ViewBag.Civil), "-- Seleccione --",
-                                     new { @class = "form-control" })                            
-                        }
-                        else
-                        {
-                            <p>No se pudieron cargar los Estados Civiles.</p>
-                        }
-                    </div>
-                </div>
-                <!-- Estado Civil | Ocupacion | Nacionalidad -->
-                <div class="row mb-4">
-                    <div class="col-3 ms-5">
-                        @Html.LabelFor(model => model.CasadoVeces)
-                        @Html.EditorFor(model => model.CasadoVeces, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-                    <div class="col-3">
-                        @Html.LabelFor(model => model.Ocupacion)
-                        @Html.EditorFor(model => model.Ocupacion, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-                    <div class="col-3">
-                        @Html.LabelFor(model => model.Nacionalidad)
-                        @if (ViewBag.Nacionalidades != null)
-                        {
-                            @Html.DropDownListFor(model => model.Nacionalidad, new SelectList((IEnumerable<string>)ViewBag.Nacionalidades), "-- Seleccione --",
-                                     new { @class = "form-control" })                         
-                        }
-                        else
-                        {
-                            <p>No se pudieron cargar las nacionalidades.</p>
-                        }
-                    </div>
-                </div>
-                <!--Botton-->
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <input type="submit" value="Crear Fisico" class="btn btn-primary btn-md mt-3" />
-                    </div>
-                </div>
+            <div class="col text-center">
+                <!--Titulo Formulario-->
+                <h3>Crear Cliente Físico</h3>
+            </div>
+            <div class="col">
             </div>
         </div>
-     </div>
+        <!--Titulo Formulario-->
+
+        <!--Campos del Formulario  ( Tipo Identificacion y Cedula-->
+        <div class="row justify-content-center ms-5">
+                <div class="col-3 ms-1">
+                    @Html.LabelFor(model => model.Tipo_Identificacion)
+                    @Html.DropDownListFor(model => model.Tipo_Identificacion, new SelectList((IEnumerable<string>)ViewBag.TiposID), "-- Seleccione --",
+                         new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Tipo_Identificacion, "", new { @class = "text-danger" })
+                 
+                    
+                </div>
+                <div class="col-3">
+                    @Html.LabelFor(model => model.Identificacion)
+                    @Html.EditorFor(model => model.Identificacion, new { htmlAttributes = new { @class = "form-control", @id = "Identificacion" } })
+                @Html.ValidationMessageFor(model => model.Identificacion, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-3"></div>
+        </div>
+        <!-- Nombre | 1° Apellido | 2° Apellido -->
+        <div class="row mb-4  ms-5 justify-content-center">
+            <div class="col-3  ">
+                @Html.LabelFor(model => model.Nombre)
+                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-3">
+                @Html.LabelFor(model => model.PrimerApellido)
+                @Html.EditorFor(model => model.PrimerApellido, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PrimerApellido, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-3">
+                @Html.LabelFor(model => model.SegundoApellido)
+                @Html.EditorFor(model => model.SegundoApellido, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PrimerApellido, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <!-- Fecha Nacimiento | Sexo | Genero -->
+        <div class="row mb-4  ms-5 justify-content-center">
+            <div class="col-3">
+                @Html.LabelFor(model => model.FechaNacimiento)
+                @Html.EditorFor(model => model.FechaNacimiento, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                @Html.ValidationMessageFor(model => model.FechaNacimiento, "", new { @class = "text-danger" })
+               
+            </div>
+            <div class="col-3">
+                @Html.LabelFor(model => model.Sexo)
+                @if (ViewBag.Generos != null)
+                {
+                    @Html.DropDownListFor(model => model.Sexo, new SelectList((IEnumerable<string>)ViewBag.Generos), "-- Seleccione --",
+                             new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Sexo, "", new { @class = "text-danger" })
+                }
+                else
+                {
+                    <p>No se pudieron cargar los generos.</p>
+                }
+            </div>
+            <div class="col-3">
+                @Html.LabelFor(model => model.EstadoCivil)
+                @if (ViewBag.Civil != null)
+                {
+                    @Html.DropDownListFor(model => model.EstadoCivil, new SelectList((IEnumerable<string>)ViewBag.Civil), "-- Seleccione --",
+                             new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.EstadoCivil, "", new { @class = "text-danger" })
+                }
+                else
+                {
+                    <p>No se pudieron cargar los Estados Civiles.</p>
+                }
+            </div>
+        </div>
+        <!-- Estado Civil | Ocupacion | Nacionalidad -->
+        <div class="row mb-4 ms-5 justify-content-center">
+            <div class="col-3">
+                @Html.LabelFor(model => model.CasadoVeces)
+                @Html.EditorFor(model => model.CasadoVeces, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CasadoVeces, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-3">
+                @Html.LabelFor(model => model.Ocupacion)
+                @Html.EditorFor(model => model.Ocupacion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Ocupacion, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-3">
+                @Html.LabelFor(model => model.Nacionalidad)
+                @if (ViewBag.Nacionalidades != null)
+                {
+                    @Html.DropDownListFor(model => model.Nacionalidad, new SelectList((IEnumerable<string>)ViewBag.Nacionalidades), "-- Seleccione --",
+                             new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Nacionalidad, "", new { @class = "text-danger" })
+                }
+                else
+                {
+                    <p>No se pudieron cargar las nacionalidades.</p>
+                }
+            </div>
+        </div>
+        <!--Botton-->
+        <div class="row">
+            <div class="col-12 text-center">
+                <input type="submit" value="Crear Fisico" class="btn btn-primary btn-md mt-3" />
+            </div>
+        </div>
+    </div>
+
+
+
+
+   
 }
+
+
 
