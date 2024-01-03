@@ -72,6 +72,8 @@ namespace Expediente.Controllers
                 {
                     _context.Add(Fisicos);
                     await _context.SaveChangesAsync();
+                    TempData["SuccessMessage"] = "Cliente creado correctamente!";
+                    
                     return RedirectToAction(nameof(Index));
                 }
             
@@ -119,6 +121,7 @@ namespace Expediente.Controllers
                 {
                     _context.Update(Fisicos);
                     await _context.SaveChangesAsync();
+                    TempData["SuccessMessage"] = "Cliente modificado correctamente!";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -172,6 +175,7 @@ namespace Expediente.Controllers
             {
                 _context.Fisicos.Remove(fisico);
                 await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "Cliente eliminado correctamente!";
                 return RedirectToAction(nameof(Index));
             }
             else
