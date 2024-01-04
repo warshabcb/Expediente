@@ -72,12 +72,10 @@ namespace Expediente.Controllers
                 {
                     _context.Add(Fisicos);
                     await _context.SaveChangesAsync();
-                    TempData["SuccessMessage"] = "Cliente creado correctamente!";
-                    
+                    TempData["SuccessMessage"] = "Cliente creado correctamente!";                    
                     return RedirectToAction(nameof(Index));
                 }
-            
-                
+                         
            return View(Fisicos);
         }
 
@@ -184,7 +182,6 @@ namespace Expediente.Controllers
                 return NotFound();
             }
         }
-
         private bool FisicosExists(int id)
         {
             return _context.Fisicos.Any(e => e.Id == id);
