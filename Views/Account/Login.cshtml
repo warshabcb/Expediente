@@ -1,0 +1,80 @@
+﻿@model Expediente.Models.LoginViewModel
+
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @id = "FormularioLogin", @name = "FormularioLogin" }))
+{
+	ViewBag.Title = "Login";
+
+	
+
+
+	<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="container justify-content-center w-75 ">
+
+      <section class="h-100">
+		<div class="container h-100">
+			<div class="row justify-content-sm-center h-100">
+				<div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
+					<div class="text-center my-3">
+						<img src="~/img/Expediente.png" alt="logo" width="100">
+					</div>
+					<div class="card shadow-lg">
+						<div class="card-body p-4 m-1">
+							<h1 class=" text-center fs-4 card-title fw-bold mb-4">Ingreso Seguro</h1>
+							 
+								<div class="mb-3 ">
+									 @Html.LabelFor(model => model.Cedula)
+									 @Html.EditorFor(model => model.Cedula, new { htmlAttributes = new { @class = "form-control", @id = "Identificacion", required = "required", autofocus = "autofocus" } })
+									 @Html.ValidationMessageFor(model => model.Cedula, "", new { @class = "text-danger" })								
+								</div>
+
+								<div class="mb-3">
+									<div class="mb-2 w-100">
+										  @Html.LabelFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+										  @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+										  @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })		
+									</div>
+ 
+								</div>
+
+								<div class="text-center align-items-center">
+									<button type="submit" class="btn btn-primary ms-auto">
+										Ingresar
+									</button>
+								</div>
+				 
+						</div>
+						<div class="card-footer py-3 border-0">
+							<div class="text-center">
+									@if (ViewBag.ErrorMessage != null)
+									{
+										<div id="errorAlert" class="alert alert-danger card-text text-center">
+											<strong>
+												@ViewBag.ErrorMessage
+											</strong>
+										</div>
+									}
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</section>
+
+		<script>
+			window.onload = function () {
+				setTimeout(function () {
+					var errorAlert = document.getElementById("errorAlert");
+					if (errorAlert) {
+						errorAlert.style.display = 'none';
+					}
+				}, 4000);
+			};
+		</script>
+
+	</div>
+
+
+}

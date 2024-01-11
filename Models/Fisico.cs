@@ -41,6 +41,8 @@ namespace Expediente.Models
             [Display(Name = "# Veces Casado")]
             [Range(0, 99, ErrorMessage = "El número de veces casado debe estar entre 0 y 99")]
             public int CasadoVeces { get; set; } = 0;
+
+            
     }
     
 }

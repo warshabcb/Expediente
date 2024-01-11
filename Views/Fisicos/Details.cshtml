@@ -1,9 +1,9 @@
-﻿@model Expediente.Models.Fisico
+﻿@model Expediente.Models.FisicoRelacion
  
 @using (Html.BeginForm("index", "Fisicos"))
 {
-    <div class="container">                
-            <div class="row border rounded bg-light align-items-baseline pb-0">
+    <div class="container rounded pb-4 shadow-lg object-fit-none">
+        <div class="row border rounded bg-light align-items-baseline pb-0">
 			<div class="col align-items-baseline align-self-center">
                      <a asp-action="index" asp-controller="Fisicos" class="btn btn-primary btn-sm">
                          <i class="fa-solid fa-circle-arrow-left"></i>
@@ -18,16 +18,16 @@
                 </div>           
             </div>
             
-            <div class="row justify-content-center mt-0">
+            <div class="row justify-content-center mt-3">
                 <div class="col-3">
-                    @Html.LabelFor(model => model.Tipo_Identificacion)
-                    @Html.DropDownListFor(model => model.Tipo_Identificacion, 
-                      new SelectList((IEnumerable<string>)ViewBag.TiposID), "-- Seleccione --",
+                    @Html.LabelFor(model => model.Fisico.Tipo_Identificacion)
+                    @Html.DropDownListFor(model => model.Fisico.Tipo_Identificacion,
+                         new SelectList((IEnumerable<string>)ViewBag.TiposID), "-- Seleccione --",
                       new { @class = "form-control", disabled = "disabled" })
                 </div>
                 <div class="col-3">
-                    @Html.LabelFor(model => model.Identificacion)
-                    @Html.EditorFor(model => model.Identificacion, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                @Html.LabelFor(model => model.Fisico.Identificacion)
+                @Html.EditorFor(model => model.Fisico.Identificacion, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
                 </div>
                 <div class="col-3">
                 
@@ -36,96 +36,158 @@
 
             <div class="row justify-content-center">
                     <div class="col-3">
-                        @Html.LabelFor(model => model.Nombre)
-                        @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                @Html.LabelFor(model => model.Fisico.Nombre)
+                @Html.EditorFor(model => model.Fisico.Nombre, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
                     </div>
                     <div class="col-3">
-                        @Html.LabelFor(model => model.PrimerApellido)
-                        @Html.EditorFor(model => model.PrimerApellido, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                @Html.LabelFor(model => model.Fisico.PrimerApellido)
+                @Html.EditorFor(model => model.Fisico.PrimerApellido, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
                     </div>
                     <div class="col-3">
-                        @Html.LabelFor(model => model.SegundoApellido)
-                        @Html.EditorFor(model => model.SegundoApellido, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                @Html.LabelFor(model => model.Fisico.SegundoApellido)
+                @Html.EditorFor(model => model.Fisico.SegundoApellido, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
                     </div>
              </div>
 
             <div class="row justify-content-center mb-3">
                 <div class="col-3">
-                    @Html.LabelFor(model => model.FechaNacimiento)
-                    @Html.EditorFor(model => model.FechaNacimiento, new { htmlAttributes = new { @class = "form-control", @type = "date", disabled = "disabled" } })
-                    @Html.ValidationMessageFor(model => model.FechaNacimiento, "", new { @class = "text-danger", disabled = "disabled" })
+                @Html.LabelFor(model => model.Fisico.FechaNacimiento)
+                @Html.EditorFor(model => model.Fisico.FechaNacimiento, new { htmlAttributes = new { @class = "form-control", @type = "date", disabled = "disabled" } })
+                @Html.ValidationMessageFor(model => model.Fisico.FechaNacimiento, "", new { @class = "text-danger", disabled = "disabled" })
                 </div>
                 <div class="col-3">
-                    @Html.LabelFor(model => model.Sexo)
-                    @Html.DropDownListFor(model => model.Sexo, new SelectList((IEnumerable<string>)ViewBag.Generos), "-- Seleccione --",
+                @Html.LabelFor(model => model.Fisico.Sexo)
+                @Html.DropDownListFor(model => model.Fisico.Sexo, new SelectList((IEnumerable<string>)ViewBag.Generos), "-- Seleccione --",
                                  new { @class = "form-control", disabled = "disabled" })                   
                 </div>
                 <div class="col-3">
-                    @Html.LabelFor(model => model.EstadoCivil)
-                    @Html.DropDownListFor(model => model.EstadoCivil, new SelectList((IEnumerable<string>)ViewBag.Civil), "-- Seleccione --",
+                @Html.LabelFor(model => model.Fisico.EstadoCivil)
+                @Html.DropDownListFor(model => model.Fisico.EstadoCivil, new SelectList((IEnumerable<string>)ViewBag.Civil), "-- Seleccione --",
                                  new { @class = "form-control", disabled = "disabled" })                    
                 </div>
             </div>
+            <!-- Estado Civil | Ocupacion | Nacionalidad -->
+        <div class="row justify-content-center mb-3">
+                <div class="col-3">
+                @Html.LabelFor(model => model.Fisico.CasadoVeces)
+                @Html.EditorFor(model => model.Fisico.CasadoVeces, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                </div>
+                <div class="col-3">
+                @Html.LabelFor(model => model.Fisico.Ocupacion)
+                @Html.EditorFor(model => model.Fisico.Ocupacion, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            </div>
+                <div class="col-3">
+                @Html.LabelFor(model => model.Fisico.Nacionalidad)
+                @Html.DropDownListFor(model => model.Fisico.Nacionalidad, new SelectList((IEnumerable<string>)ViewBag.Nacionalidades), "-- Seleccione --",
+                         new { @class = "form-control", disabled = "disabled" })                   
+                </div>
+            </div>
 
+            <!-- Manejor de Tabs -->
+            <div class="container w-75">
+                <ul class="nav nav-tabs mt-3" id="TabFisicos" role="tablist">
+                    <li class="nav-item " role="presentation">
+                        <button class="nav-link active" id="Phone-Tab" data-bs-toggle="tab" data-bs-target="#Phone" type="button" role="tab" aria-controls="home" aria-selected="true">Telefonos</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="Domicilio-Tab" data-bs-toggle="tab" data-bs-target="#Domicilio" type="button" role="tab" aria-controls="profile" aria-selected="false">Domicilio</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="Correos-Tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Correos</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="BienesMuebles-Tab" data-bs-toggle="tab" data-bs-target="#Muebles" type="button" role="tab" aria-controls="contact" aria-selected="false">Bienes Muebles</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="BienesMuebles-Tab" data-bs-toggle="tab" data-bs-target="#Muebles" type="button" role="tab" aria-controls="contact" aria-selected="false">Bienes Inmuebles</button>
+                    </li>
+                </ul>
+                <div class="tab-content " id="myTabContent">
+                <div class="tab-pane fade show active" id="Phone" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="row align-content-center align-items-center container  ">
+                        <div class="row m-0 p-1 ">
+                            <div class="col text-start">
+                                <a asp-action="index" asp-controller="Fisicos" class="btn btn-primary btn-sm">
+                                    <i class="fa-solid fa-circle-plus"></i>
+                                    Agregar Telefono
+                                </a>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-bordered table-sm  text-small ">
+                                <thead class="table-light text-center w-75">
+                                    <tr class="text-center ">
+                                        <th class="col-1">ID</th>
+                                        <th>Tipo</th>
+                                        <th>Telefono</th>
+                                        <th class="text-center col-1">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-small">
+                                    @foreach (var item in Model.Telefonos)
+                                    {
+                                        <tr class="justify-content-center align-baseline text-center">
+                                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Tipo)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+                                            <td class="text-center">
+                                                <a href="@Url.Action("Delete","Fisicos", new { id = item.Id })" class="btn btn-danger btn-icon fa-sm" title="Eliminar">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
 
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="Domicilio" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="row align-content-center align-items-center">
+                        <div class="col justify-content-center">
+                            <table class="table table-hover table-bordered table-sm">
+                                <thead class="table-light">
+                                    <tr class="text-center">
+                                        <th scope="col">#</th>
+                                        <th scope="col">Tipo</th>
+                                        <th scope="col">Domicilio</th>
+                                        <th scope="col">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Casa</td>
+                                        <td>50 mts antes del puente de Cartagena Santa Cruz Gte</td>
+                                        <td>Eliminar</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>Trabajo</td>
+                                        <td>BCR Flamingo Flamingo Santa Cruz Gte</td>
+                                        <td>Eliminar</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>Trabajo Remoto</td>
+                                        <td>The Palms Flamingo Santa Crux Gte</td>
+                                        <td>Eliminar</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                    ...
+                </div>
+            </div>
 
-		<div class="container shadow-sm rounded">
-			<div class="row">
-				<div class="col">
-					<div class="accordion accordion-flush" id="temario">
-						<!-- Elemento #1 -->
-						<div class="accordion-item">
-							<h2 class="accordion-header" id="encabezado-1">
-								<button class="accordion-button"
-										type="button"
-										data-bs-toggle="collapse"
-										data-bs-target="#elemento-1"
-										aria-expanded="true"
-										aria-controles="elemento-1">
-                                    <strong>Telefonos</strong>
-                                        
-								</button>
-							</h2>
+            </div>
 
-							<div id="elemento-1"
-								 class="accordion-collapse collapse show"
-								 aria-labelledby="encabezado-1"
-								 data-bs-parent="#temario">
-								<div class="accordion-body">
-									<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores, praesentium animi. Ratione accusamus fugit saepe cupiditate omnis accusantium modi adipisci, sunt numquam expedita, ea deleniti aliquid et quas voluptatum iusto.</p>
-								</div>
-							</div>
-						</div>
-
-						<!-- Elemento #2 -->
-						<div class="accordion-item">
-							<h2 class="accordion-header" id="encabezado-2">
-								<button class="accordion-button"
-										type="button"
-										data-bs-toggle="collapse"
-										data-bs-target="#elemento-2"
-										aria-expanded="true"
-										aria-controles="elemento-2">
-                                    <strong>Direcciones</strong>
-								</button>
-							</h2>
-
-							<div id="elemento-2"
-								 class="accordion-collapse collapse"
-								 aria-labelledby="encabezado-2"
-								 data-bs-parent="#temario">
-								<div class="accordion-body">
-									<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores, praesentium animi. Ratione accusamus fugit saepe cupiditate omnis accusantium modi adipisci, sunt numquam expedita, ea deleniti aliquid et quas voluptatum iusto.</p>
-								</div>
-							</div>
-						</div>
-
-						
-					</div>
-				</div>
-			</div>
-		</div>
-
+       
+		
 
 
 

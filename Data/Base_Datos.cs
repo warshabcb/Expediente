@@ -19,5 +19,9 @@ namespace Expediente.Data
         public DbSet<Genero> Generos{ get; set; }
         public DbSet<EstadoCivil> EstadosCivil { get; set; }
         public DbSet<Tipos_Identificacion> Tipos_ID { get; set; }
+        public DbSet<Telefono> Telefonos { get; set; }
+        public DbSet<User> Users { get; set; }
+
+
     }
 }

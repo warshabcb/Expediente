@@ -1,5 +1,6 @@
 ﻿using Expediente.Data;
 using Expediente.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -14,8 +15,9 @@ namespace Expediente.Controllers
         {
             _context = context;
         }
-        // GET: Fisicos
-        public async Task<IActionResult> Index()
+		// GET: Fisicos
+		[Authorize(Roles = "Admin,Manager,User")]
+		public async Task<IActionResult> Index()
         {
             return View(await _context.Fisicos.ToListAsync());
         }
@@ -23,7 +25,7 @@ namespace Expediente.Controllers
         // GET: Fisicos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            
+             
             var TiposID = _context.Tipos_ID.Select(t => t.Tipo).ToList();
             var Generos = _context.Generos.Select(n => n.Sexo).ToList();
             var Civil = _context.EstadosCivil.Select(n => n.Estado_Civil).ToList();
@@ -37,14 +39,24 @@ namespace Expediente.Controllers
                 return NotFound();
             }
 
-            var Cliente = await _context.Fisicos
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var Cliente = await _context.Fisicos.FirstOrDefaultAsync(m => m.Id == id);
+                       
             if (Cliente == null)
             {
                 return NotFound();
             }
+            var Telefono = _context.Telefonos.Where(t => t.Identificacion == Cliente.Identificacion).ToList();
+            
+            // Crea el ViewModel y asigna los datos
+            var viewModel = new FisicoRelacion
+            {
+                Fisico = Cliente,
+                Telefonos = Telefono
+            };
 
-            return View(Cliente);
+
+
+            return View(viewModel);
         }
 
         // GET: Fisicos/Create
