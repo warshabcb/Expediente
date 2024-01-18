@@ -74,3 +74,7 @@ Json Base Datos
 | `Sexo`           | `VARCHAR(20)`           | `NOT NULL UNIQUE`            | Genero Personal                              |
 
 
+```sql
+INSERT INTO `AspNetUsers` (`Id`, `Discriminator`, `Nombre`, `PrimerApellido`, `SegundoApellido`, `Telefono`, `Estado`, `UserName`, `NormalizedUserName`, `Email`, `NormalizedEmail`, `EmailConfirmed`, `PasswordHash`, `SecurityStamp`, `ConcurrencyStamp`, `PhoneNumber`, `PhoneNumberConfirmed`, `TwoFactorEnabled`, `LockoutEnd`, `LockoutEnabled`, `AccessFailedCount`) VALUES
+('566ad77e-08dc-44ae-9645-c9c31fd0165f', 'Usuario', 'Warshab  ', 'Contreras', 'Bustos', '+50687187484', 0, 'warshab.contreras@gmail.com', 'WARSHAB.CONTRERAS@GMAIL.COM', 'warshab.contreras@gmail.com', 'WARSHAB.CONTRERAS@GMAIL.COM', 0, 'AQAAAAIAAYagAAAAECy3JOtYB2TSmaEVoNgpvsrrWBq652tZNwRVnTzvZhZMUHWu6x3PErvp2B1HEjRZvA==', 'L62VJ3EBCMNMQ34YOS6X7LHCNIX3SZQR', 'ab12f0f5-6777-4ed2-b839-92846eb87a99', NULL, 0, 0, NULL, 1, 0);
+```
